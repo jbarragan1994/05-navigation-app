@@ -1,6 +1,7 @@
 import { useFonts } from 'expo-font'
 import { Slot, SplashScreen } from 'expo-router'
 import { useEffect } from 'react'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import "../global.css"
 
 SplashScreen.preventAutoHideAsync()
@@ -18,8 +19,14 @@ const RootLayout = () => {
     }, [fontsLoaded, error])
 
     if (!fontsLoaded && !error) return null
+    return (
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <Slot />
+        </GestureHandlerRootView>
+    )
 
-    return <Slot />
+
+    // return <Slot />
     // return <Stack />
 }
 
